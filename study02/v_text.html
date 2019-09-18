@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<body>
+<div id = "app">
+    <h2>{{message}}</h2>
+<!--    显示文本，会覆盖以前的文本-->
+    <h2 v-text="message"></h2>
+<!--    不要解析vue命令-->
+    <h2 v-pre>{{message}}</h2>
+    <h2 v-cloak>{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    //在vue解析之前，h2有一个属性v-cloak
+    //解析之后就没有了
+    setTimeout(function () {
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好'
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
