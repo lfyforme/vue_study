@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id = "app">
+    <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            firstName: 'qw',
+            lastName: 'er'
+        },
+        computed:{
+            fullName:{
+                //一般只有get方法
+                set: function (newValue) {
+                    console.log(newValue);
+                },
+                get: function () {
+                    return this.firstName+' '+this.lastName;
+                }
+            },
+            //对应的是get方法，不需要在fullName后面加（）
+            // fullName:function () {
+            //     return this.firstName+' '+this.lastName;
+            // }
+        }
+    })
+</script>
+</body>
+</html>

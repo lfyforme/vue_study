@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+<button>5</button>
+<script>
+    //1
+    //es5之前没有块级作用域的概念，所以在很多时候，必须借助于function的作用于来
+    //解决应用外面的变量作用域
+    /*
+    let可以解决var在块级作用域的问题，它有自己的作用域
+     */
+
+    {
+        var name = "why";
+        console.log(name);
+    }
+    console.log(name);
+    var btns = document.getElementsByTagName('button');
+    for (var i=0; i < btns.length;i++){
+        (function(i){
+            btns[i].addEventListener('click',function () {
+                console.log('第' + i + '个按钮点击');
+            })
+        })(i)
+    }
+
+    /*
+    没有用闭包
+    i = 0;共用一个i
+    {
+    btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+
+    {
+    btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+
+   {
+    btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+
+    {
+    i = 3;
+    btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+
+    {
+    btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+    /*
+
+
+     i = 0;
+     function (i){
+        btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+
+    function (i){
+        btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+    function (i){
+        btns[i].addEventListener('click',function () {
+            console.log('第' + i + '个按钮点击');
+        })
+    }
+     */
+
+</script>
+</body>
+</html>

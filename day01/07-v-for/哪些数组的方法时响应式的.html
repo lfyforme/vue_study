@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id = "app">
+  <ul>
+    <li v-for="item in letters">{{item}}</li>
+  </ul>
+  <button @click="btnClick">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      letters:['A','B','C','D']
+      },
+    methods:{
+      btnClick(){
+        //...num可以放可变参数（多个）
+        function sum(...num) {
+          console.log(num);
+        }
+        //push方法
+        this.letters.push('as','ss','s');
+
+        //pop删除最后一个元素
+        this.letters.pop('as');
+
+        //删除第一个元素
+        this.letters.shift();
+
+        //添加元素在最前面
+        this.letters.unshift('as','a','s');
+
+        //作用：删除元素/插入元素/替换元素
+        //splice(start,number)
+        //删除元素：第二个参数传入删除几个元素，没有第二个参数时直接删除到最后一个元素
+        //替换参数：第二个参数，表示替换几个元素，后面则是用于替换前面的元素
+        //插入元素：第二个参数，传入0，并且后面要插入的元素
+        this.letters.splice();
+
+        //
+        this.letters.sort();
+
+        //倒转
+        this.letters.reverse();
+
+        //通过索引值修改数组中的元素，不是响应式
+        this.letters[0] = 'aa';
+
+        Vue.set(this.letters,0,'bbb');//修改第0个元素
+      }
+    }
+    })
+</script>
+</body>
+</html>
